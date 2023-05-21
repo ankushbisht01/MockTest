@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+        async></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+        body {
+            background-color: beige;
+        }
+
+        .container {
+            margin-top: 2rem;
+            padding-top:3rem;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border: 1px solid black;
+            background-color: #fff;
+            overflow: auto;
+        }
+        .time{
+            position: absolute;
+            padding: 10px;
+            
+        }
+
+        
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: Quicksand, sans-serif;
+            position: fixed;
+            border : 1px solid black;
+            background-color:white;
+            z-index: 1;
+            padding: 0 3rem;
+
+            
+        }
+
+        .heading  {
+            font-family: Quicksand;
+            margin-bottom: 0.2rem;
+            font-style:bolder;
+            font-weight: 700;
+        }
+        .options{
+            font-family: Quicksand, sans-serif;
+            font-weight: 550;
+
+        }
+
+        .question {
+            font-family: Quicksand, sans-serif;
+            font-weight: 400;
+        }
+       
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <div class="header">
+
+            <h1 class="heading">Solution</h1>
+            <div></div>
+            <hr >
+        </div>
+
+        <div class="test">
+            
+                {% for test , choice in questions %}
+                <div class="question">
+                    <p>
+                        <b>
+    
+                            {{ forloop.counter }}.  {{ test.question.question_text }}
+                        </b>
+                    </p>
+                </div>
+    
+                <div class="options">
+                    <ul>
+                        {% for option in choice %}
+                        {% if option.choice_label == test.question.correct_option %}
+                            <li style="color:blue; ">{{ option.choice_text }}</li><br>
+                        {% elif option.choice_label == test.attempted_option %}
+                            <li style="color:red; ">{{ option.choice_text }}</li><br>
+                        {% else %}
+                            <script>console.log("test")</script>
+                            <li>{{ option.choice_text }}</li><br>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="solution">
+                    <p>
+                        <b>
+                            Solution:
+                            <br>
+
+                            {{test.question.solution}}
+                        </b>
+                    </p>
+                </div>
+                <hr>
+                    
+                {% endfor %}
+
+                
+           
+        </div>
+    </div>
+</body>
+</html>
+
