@@ -1,7 +1,11 @@
 asgiref==3.6.0
+dj-database-url==2.0.0
 Django==4.2.1
 gunicorn==20.1.0
+psycopg2==2.9.6
+psycopg2-binary==2.9.6
 python-decouple==3.8
 sqlparse==0.4.4
+typing_extensions==4.5.0
 tzdata==2023.3
 whitenoise==6.4.0
