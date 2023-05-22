@@ -34,8 +34,7 @@ class Command(BaseCommand):
         for row in choices_reader:
             if row[0] == "questions":
                 continue
-            if  check <= 4085:
-                print(check)
+            if  check <= 11351:
                 check = check + 1
                 continue
             

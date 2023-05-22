@@ -43,6 +43,12 @@ def homepage(request):
     
 
     questions = models.Question.objects.all()
+    #remove Â from solution
+    for i in questions:
+        i.question_text = i.question_text.replace("Â" , "")
+        i.solution = i.solution.replace("Â" , "")
+        i.save()
+    
     #get random 50 question 
     questions = random.sample(list(questions), 50)
     choices = []
