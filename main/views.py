@@ -27,6 +27,9 @@ def homepage(request):
             question.save()
             if (choices[0]== choices[1]):
                 right+=1
+            elif (choices[0]!= choices[1]):
+                right -= 0.25
+            
         
         test.marks_obtained = right
         test.save()
