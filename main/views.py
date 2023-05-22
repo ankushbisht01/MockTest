@@ -43,7 +43,7 @@ def homepage(request):
     
     #get all the test by the user 
     temp = models.Test.objects.filter(user = request.user)
-    totalTest = len(temp)
+    totalTest = len(temp)+1
     if totalTest < 7:
         questions = models.Question.objects.all(level="easy")
     else:
