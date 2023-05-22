@@ -6,7 +6,7 @@ venv/
 
 *.pyc
 db.sqlite3
-staticfiles/
+
 data/
 *.csv
 *.ipynb
