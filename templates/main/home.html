@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
         async></script>
-    <title>Document</title>
+
+
+        <title>CUET MATHS MCA</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+
+        
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
@@ -94,7 +103,7 @@
                 <br>
                 <hr>
                 {% endfor %}
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" id="submitBtn">
             </form>
         </div>
     </div>
@@ -146,7 +155,7 @@
             </script>
 
             <!-- Script for tab switch  -->
-            <!-- <script>
+             <script>
             // Check browser support for the Page Visibility API
             const visibilityChange = typeof document.hidden !== "undefined" ? "visibilitychange" :
             typeof document.msHidden !== "undefined" ? "msvisibilitychange" :
@@ -166,7 +175,7 @@
             }
             </script>
 
-             -->
+            
             <script>
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equations"]);
             </script>
