@@ -93,7 +93,6 @@ def test(request,test_id):
 def index(request):
     test = models.Test.objects.filter(user = request.user )
     total_test = len(test)
-    print(total_test)
     average_marks = 0
     for i in test:
         average_marks += i.marks_obtained
