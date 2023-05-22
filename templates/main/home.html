@@ -155,7 +155,7 @@
             </script>
 
             <!-- Script for tab switch  -->
-             <script>
+             {% comment %} <script>
             // Check browser support for the Page Visibility API
             const visibilityChange = typeof document.hidden !== "undefined" ? "visibilitychange" :
             typeof document.msHidden !== "undefined" ? "msvisibilitychange" :
@@ -173,7 +173,7 @@
             alert("You switched tabs!");
             }
             }
-            </script>
+            </script> {% endcomment %}
 
             
             <script>
