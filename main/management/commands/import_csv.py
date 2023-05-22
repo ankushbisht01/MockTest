@@ -10,27 +10,28 @@ class Command(BaseCommand):
         parser.add_argument("choices_file", type=open, help="Path to the file with question choices")
 
     def handle(self, *args, **options):
-        questions_file = options["questions_file"]
+        # questions_file = options["questions_file"]
         choices_file = options["choices_file"]
 
         #Import questions
-        questions_reader = csv.reader(questions_file, delimiter=",")
-        for row in questions_reader:
-            if row[0] == "question_text":
-                continue
+        # questions_reader = csv.reader(questions_file, delimiter=",")
+        # for row in questions_reader:
+        #     if row[0] == "question_text":
+        #         continue
 
-            question = Question()
-            question.question_text = row[0]
-            question.correct_option = row[6]
-            question.topic = row[3]
-            question.solution = row[2]
-            question.level = row[5]
-            question.subject = row[4]
-            question.save()
+        #     question = Question()
+        #     question.question_text = row[0]
+        #     question.correct_option = row[6]
+        #     question.topic = row[3]
+        #     question.solution = row[2]
+        #     question.level = row[5]
+        #     question.subject = row[4]
+        #     question.save()
 
         # Import choices
+        check = 0 
         choices_reader = csv.reader(choices_file, delimiter=",")
-        for row in choices_reader:
+        for row in choices_reader and check <= 4085:
             if row[0] == "questions":
                 continue
 
