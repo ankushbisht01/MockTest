@@ -44,7 +44,7 @@ def homepage(request):
 
     questions = models.Question.objects.all()
     #get random 50 question 
-    questions = random.sample(list(questions), 4)
+    questions = random.sample(list(questions), 50)
     choices = []
     #create an instance of test 
     new_test = models.Test.objects.create(user=request.user, marks_obtained=0 , completed=False)

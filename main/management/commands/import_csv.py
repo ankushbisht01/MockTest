@@ -35,8 +35,10 @@ class Command(BaseCommand):
             if row[0] == "questions":
                 continue
             if  check <= 4085:
+                print(check)
                 check = check + 1
                 continue
+            
             question_text = row[0]
             choice_text = row[1]
             label = row[2]
