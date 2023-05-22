@@ -261,10 +261,13 @@
                           </td>
                           
                           <td class="px-4 py-3 text-sm">50</td>
-                          <a href="{% url 'delete' test.id %}">
+                          <td class="px-4 py-3 text-sm">
 
-                            <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"> Delete </span>
-                          </a>
+                            <a href="{% url 'delete' test.id %}">
+                              <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"> Delete </span>
+                            </a>
+                            
+                          </td>
                           
                         </tr>
                     {% endfor %}
