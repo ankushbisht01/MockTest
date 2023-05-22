@@ -41,10 +41,13 @@ def homepage(request):
         }
         return render(request , "main/result.html", context )
     
-
-    questions = models.Question.objects.all()
-    #remove Â from solution
-   
+    #get all the test by the user 
+    temp = models.Test.objects.filter(user = request.user)
+    totalTest = len(temp)
+    if totalTest < 7:
+        questions = models.Question.objects.all(level="easy")
+    else:
+        questions = models.Question.objects.all()
     
     #get random 50 question 
     questions = random.sample(list(questions), 50)
@@ -105,6 +108,37 @@ def index(request):
 
 @login_required(login_url='login')
 def getTest(request , test_id):
+    if (request.method == "POST"):
+        right = 0
+        testid = request.POST['testid'];
+        test = models.Test(id = testid)
+        test.user = request.user
+        test.completed = True
+
+        for i in request.POST:
+            if i == "csrfmiddlewaretoken" or i== "testid":
+                continue
+            #get the question in TestQuestion with questionid = i and testid = testid
+            question = models.TestQuestion.objects.get(question_id = i , test_id = testid)
+            choices = (request.POST[i]).split(" ")
+            question.attempted_option = choices[0]
+            question.save()
+            if (choices[0]== choices[1]):
+                right+=1
+        
+        test.marks_obtained = right
+        test.save()
+        questions = models.TestQuestion.objects.filter(test_id = testid)
+        choices = []
+        for question in questions:
+            choices.append(models.Choice.objects.filter(question=question.question))
+        context = {
+            "questions":zip(questions, choices),
+            "test" : test,
+
+        }
+        return render(request , "main/result.html", context )
+    
     questions = models.TestQuestion.objects.filter(test_id = test_id)
     choices = []
     ques = []
