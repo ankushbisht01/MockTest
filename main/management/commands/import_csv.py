@@ -31,10 +31,12 @@ class Command(BaseCommand):
         # Import choices
         check = 0 
         choices_reader = csv.reader(choices_file, delimiter=",")
-        for row in choices_reader and check <= 4085:
+        for row in choices_reader:
             if row[0] == "questions":
                 continue
-
+            if  check <= 4085:
+                check = check + 1
+                continue
             question_text = row[0]
             choice_text = row[1]
             label = row[2]
