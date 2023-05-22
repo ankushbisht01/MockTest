@@ -224,6 +224,8 @@
                       <th class="px-4 py-3">Marks Obtained</th>
                       <th class="px-4 py-3">Status</th>
                       <th class="px-4 py-3">total Marks </th>
+                      <th class="px-4 py-3">Action</th>
+                      
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -252,13 +254,17 @@
                             {% else %}
                             <a href="{% url 'getTest' test.id %}">
 
-                                <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"> Resume </span>
+                                <span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:bg-yellow-700 dark:text-yellow-100"> Resume </span>
                             </a>
                             {% endif %}
     
                           </td>
                           
                           <td class="px-4 py-3 text-sm">50</td>
+                          <a href="{% url 'delete' test.id %}">
+
+                            <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"> Delete </span>
+                          </a>
                           
                         </tr>
                     {% endfor %}

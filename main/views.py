@@ -120,6 +120,11 @@ def getTest(request , test_id):
     }
     return render(request, "main/home.html" , context)
 
+@login_required(login_url='login')
+def deleteTest(request , test_id):
+    test = models.Test.objects.get(id = test_id)
+    test.delete()
+    return redirect("index")
 
 
 def Login(request):
