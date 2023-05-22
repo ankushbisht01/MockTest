@@ -60,14 +60,11 @@
 
 <body>
     {% include 'navbar.html' %}
-    <div class="time sticky-top d-block d-lg-block d-md-block">
+    <div class="time">
 
         <div id="timer">00:00</div>
     </div>
-    <div class="time  d-block d-sm-block">
-
-        <div id="timer">00:00</div>
-    </div>
+    
     <div class="container">
         <div class="header">
 
@@ -83,7 +80,7 @@
                 <div class="question">
                     <p>
                         <b>
-                            {{ question.id }}. &nbsp; {{ question.question_text }}
+                            {{ forloop.counter }}. &nbsp; {{ question.question_text }}
                         </b>
                     </p>
                     {% for option in options %}
