@@ -94,7 +94,7 @@
                     </p>
                     {% for option in options %}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" id="{{ option }}" name="{{ question.id }}"
+                        <input class="form-check-input" type="radio" id="{{ question.id }}" name="{{ question.id }}"
                             value="{{option.choice_label}} {{ option.question.correct_option }}">
                         <label class="form-check-label" for="{{ question.id }}">{{ option.choice_text }}</label>
                     </div>
