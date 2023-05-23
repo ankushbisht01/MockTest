@@ -94,13 +94,13 @@
                     </p>
                     {% for option in options %}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" id="{{ question.id }}" name="{{ question.id }}"
+                        <input class="form-check-input" type="radio" id="{{ question.id }}{{option.choice_text}}" name="{{ question.id }}"
                             value="{{option.choice_label}} {{ option.question.correct_option }}">
                         <label class="form-check-label" for="{{ question.id }}">{{ option.choice_text }}</label>
                     </div>
                     {% endfor %}
                     <!--button to clear all the selected options-->
-                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}').checked = false;">Clear</button>
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}{{option.choice_text}}').checked = false;">Clear</button>
 
                     
                 </div>
