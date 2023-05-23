@@ -99,6 +99,8 @@
                         <label class="form-check-label" for="{{ question.id }}">{{ option.choice_text }}</label>
                     </div>
                     {% endfor %}
+                    {% comment %} clear button to clear the input {% endcomment %}
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}').checked = false;">Clear</button>
                 </div>
                 <br>
                 <hr>
