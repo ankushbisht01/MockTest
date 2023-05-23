@@ -49,9 +49,10 @@ def homepage(request):
     totalTest = len(temp)
     if totalTest < 3:
         #get only easy question 
-        questions = models.Question.objects.filter(level = "easy")
+        #get all the question from all topic except Differential Equations and Three Dimensional Geometry
+        questions = models.Question.objects.filter(level = "easy").exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry")
     else:
-        questions = models.Question.objects.all()
+        questions = models.Question.objects.all().exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry")
     
     #get random 50 question 
     questions = random.sample(list(questions), 50)
