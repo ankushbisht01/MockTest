@@ -100,7 +100,7 @@
                     </div>
                     {% endfor %}
                     {% comment %} clear button to clear the input {% endcomment %}
-                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}').checked = false;">Clear</button>
+                    <button type="button" class="btn btn-danger" >Clear</button>
                 </div>
                 <br>
                 <hr>
@@ -119,6 +119,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
+
+
+    <!--Clear the input -->
+    <script>
+        <!-- Clear the input on pressong the clear button -->
+        $(document).ready(function () {
+            $(".btn-danger").click(function () {
+                $(this).closest('div').find('input[type="radio"]').prop('checked', false);
+            });
+        });
+        
+    </script>
 
     <script>
         const timerDuration = 5400;
