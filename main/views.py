@@ -34,6 +34,10 @@ def homepage(request):
         test.marks_obtained = right
         test.save()
         questions = models.TestQuestion.objects.filter(test_id = testid)
+        temp = models.Choice.objects.all()
+        for i in temp:
+            i.choice_text = i.choice_text.replace("Â" , "")
+            i.save()
         choices = []
         for question in questions:
             choices.append(models.Choice.objects.filter(question=question.question))
