@@ -94,13 +94,13 @@
                     </p>
                     {% for option in options %}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" id="{{ question.id }}{{option.choice_label}}" name="{{ question.id }}"
+                        <input class="form-check-input" type="radio" id="{{ question.id }}" name="{{ question.id }}"
                             value="{{option.choice_label}} {{ option.question.correct_option }}">
                         <label class="form-check-label" for="{{ question.id }}">{{ option.choice_text }}</label>
                     </div>
                     {% endfor %}
                     <!--button to clear all the selected options-->
-                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}{{option.choice_label}}').checked = false;">Clear</button>
+                    <button type="button" class="btn btn-danger">Clear</button>
 
                     
                 </div>
@@ -121,10 +121,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
     <!--Clear the input -->
-   
+   <script>
+        $(document).ready(function () {
+            $(".btn-danger").click(function () {
+                $(this).closest(".question").find("input[type=radio]").prop("checked", false);
+            });
+        });
+    </script>
 
     <script>
         const timerDuration = 5400;
