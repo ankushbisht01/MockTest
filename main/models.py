@@ -21,7 +21,7 @@ class Choice(models.Model):
 
 class Test(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tests')
-    marks_obtained = models.IntegerField( )
+    marks_obtained = models.FloatField(default=0)
     completed = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True , null= True )
     
