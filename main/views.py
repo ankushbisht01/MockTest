@@ -54,12 +54,18 @@ def homepage(request):
     if totalTest < 5:
         #get only easy question 
         #get all the question from all topic except Differential Equations and Three Dimensional Geometry
-        questions = models.Question.objects.filter(level = "easy").exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry").exclide(topic = "Linear Programming")
+        questions = models.Question.objects.filter(level = "easy").exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry").exclude(topic = "Linear Programming")
     else:
         questions = models.Question.objects.all().exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry").exclude(topic = "Linear Programming")
     
     #get random 50 question 
     questions = random.sample(list(questions), 50)
+
+    temp = models.Question.objects.all()
+    for i in temp:
+        i.solution = i.solution.replace("Â" , "")
+        i.save()
+
     choices = []
     #create an instance of test 
     new_test = models.Test.objects.create(user=request.user, marks_obtained=0 , completed=False)
@@ -82,10 +88,7 @@ def homepage(request):
 @login_required(login_url='login')
 def test(request,test_id):
     questions = models.TestQuestion.objects.filter(test_id = test_id)
-    temp = models.Question.objects.all()
-    for i in temp:
-        i.solution = i.solution.replace("Â" , "")
-        i.save()
+    
     choices = []
     for question in questions:
         choices.append(models.Choice.objects.filter(question=question.question))
