@@ -99,8 +99,10 @@
                         <label class="form-check-label" for="{{ question.id }}">{{ option.choice_text }}</label>
                     </div>
                     {% endfor %}
-                    {% comment %} clear button to clear the input {% endcomment %}
-                    <button type="button" class="btn btn-danger" >Clear</button>
+                    <!--button to clear all the selected options-->
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('{{ question.id }}').checked = false;">Clear</button>
+
+                    
                 </div>
                 <br>
                 <hr>
@@ -122,15 +124,7 @@
 
 
     <!--Clear the input -->
-    <script>
-        <!-- Clear the input on pressong the clear button -->
-        $(document).ready(function () {
-            $(".btn-danger").click(function () {
-                $(this).closest('div').find('input[type="radio"]').prop('checked', false);
-            });
-        });
-        
-    </script>
+   
 
     <script>
         const timerDuration = 5400;
