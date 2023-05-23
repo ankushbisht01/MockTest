@@ -34,10 +34,7 @@ def homepage(request):
         test.marks_obtained = right
         test.save()
         questions = models.TestQuestion.objects.filter(test_id = testid)
-        temp = models.Choice.objects.all()
-        for i in temp:
-            i.choice_text = i.choice_text.replace("Â" , "")
-            i.save()
+        
         choices = []
         for question in questions:
             choices.append(models.Choice.objects.filter(question=question.question))
@@ -51,7 +48,7 @@ def homepage(request):
     #get all the test by the user 
     temp = models.Test.objects.filter(user = request.user)
     totalTest = len(temp)
-    if totalTest < 5:
+    if totalTest < 4:
         #get only easy question 
         #get all the question from all topic except Differential Equations and Three Dimensional Geometry
         questions = models.Question.objects.filter(level = "easy").exclude(topic = "Differential Equations").exclude(topic = "Three Dimensional Geometry").exclude(topic = "Linear Programming")
@@ -61,10 +58,7 @@ def homepage(request):
     #get random 50 question 
     questions = random.sample(list(questions), 50)
 
-    temp = models.Question.objects.all()
-    for i in temp:
-        i.solution = i.solution.replace("Â" , "")
-        i.save()
+    
 
     choices = []
     #create an instance of test 
